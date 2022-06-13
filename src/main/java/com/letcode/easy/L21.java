@@ -39,6 +39,23 @@ public class L21 {
    */
 
   public ListNode mergeTwoLists(ListNode list1, ListNode list2) {
+    return mergeTwoListsAnswer(list1, list2);
+  }
+
+  public ListNode mergeTwoListsMy(ListNode list1, ListNode list2) {
+    if (list1 == null) return list2;
+    if (list2 == null) return list1;
+
+    if (list1.val <  list2.val) {
+      list1.next = mergeTwoListsMy(list1.next, list2);
+      return list1;
+    } else {
+      list2.next = mergeTwoListsMy(list1, list2.next);
+      return list2;
+    }
+  }
+
+  public ListNode mergeTwoListsAnswer(ListNode list1, ListNode list2) {
     if (list1 == null) {
       return list2;
     }
@@ -47,12 +64,12 @@ public class L21 {
     }
 
     if (list1.val < list2.val) {
-      ListNode next = mergeTwoLists(list1.next, list2);
+      ListNode next = mergeTwoListsMy(list1.next, list2);
       System.out.println("next: " + next);
       list1.next = next;
       return list1;
     } else {
-      ListNode next = mergeTwoLists(list1, list2.next);
+      ListNode next = mergeTwoListsMy(list1, list2.next);
       System.out.println("next: " + next);
       list2.next = next;
       return list2;

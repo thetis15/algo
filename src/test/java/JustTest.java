@@ -1,5 +1,3 @@
-package com.letcode.medium;
-
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
@@ -19,13 +17,30 @@ import java.util.UUID;
 import java.util.concurrent.TimeUnit;
 
 public class JustTest {
-  public static void main(String[] args) throws Throwable {
+  public static void main(String[] args) {
     String a = "my text\u205F";
 
     System.out.println("[" + a.strip() + "]");
     System.out.println("[" + a.stripLeading() + "]");
-
   }
+
+  private static int fibonacci(int num, int sum, int prev) {
+    if (num <= 2) {
+      return sum;
+    }
+    return fibonacci(num - 1, prev + sum, sum);
+  }
+
+  private static void recursiveTest(int i) {
+    if (i <= 0) {
+      System.out.println(">> recursive ended: " + i);
+      return;
+    }
+    System.out.println("before: " + i);
+    recursiveTest(i - 1);
+    System.out.println("after: " + i);
+  }
+
 
   private static void debug(String asdf) {
     debug(asdf, 0);
@@ -85,7 +100,7 @@ public class JustTest {
     Class.forName("com.mysql.cj.jdbc.Driver");
 
     try (Connection connection = DriverManager.getConnection(
-            "jdbc:mysql://db-1injs.pub-cdb.ntruss.com:3306/bread", "sauce_admin", "SdzguU8EMUAxw89K")) {
+        "jdbc:mysql://db-1injs.pub-cdb.ntruss.com:3306/bread", "sauce_admin", "SdzguU8EMUAxw89K")) {
 
       boolean printLog = true;
 
@@ -184,7 +199,7 @@ public class JustTest {
 
 
 
-    private static void loopInLoop() {
+  private static void loopInLoop() {
     int loopCount = 0;
     int scanCount = 0;
     int n2Count = 0;

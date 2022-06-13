@@ -30,7 +30,7 @@ class L21Test {
 
   @Test
   void test1() {
-    ListNode result = l.mergeTwoLists(ListNode.of(1, 2, 4), ListNode.of(1, 3, 4));
+    ListNode result = l.mergeTwoListsMy(ListNode.of(1, 2, 4), ListNode.of(1, 3, 4));
     assertEquals(ListNode.of(1, 1, 2, 3, 4, 4).toString(), result.toString());
   }
 
@@ -56,8 +56,8 @@ class L21Test {
 
   @Test
   void test2() {
-    ListNode result = l.mergeTwoLists(ListNode.of(), ListNode.of());
-    assertEquals(ListNode.of().toString(), result.toString());
+    ListNode result = l.mergeTwoListsMy(new ListNode(), new ListNode());
+    assertEquals(new ListNode(), result);
   }
 
   /**
@@ -82,7 +82,7 @@ class L21Test {
 
   @Test
   void test3() {
-    ListNode result = l.mergeTwoLists(ListNode.of(), ListNode.of(0));
+    ListNode result = l.mergeTwoListsMy(ListNode.of(), ListNode.of(0));
     assertEquals(ListNode.of(0).toString(), result.toString());
   }
 }

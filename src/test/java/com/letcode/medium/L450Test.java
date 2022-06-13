@@ -1,8 +1,5 @@
 package com.letcode.medium;
 
-import static org.junit.jupiter.api.Assertions.*;
-
-import com.letcode.Helper;
 import com.letcode.mock.TreeNode;
 import org.junit.jupiter.api.Test;
 
@@ -32,8 +29,8 @@ Output: []
   void testCast1() {
     TreeNode root = new TreeNode();
     root.val = 5;
-    final TreeNode left1 = new TreeNode(3, new TreeNode(2), new TreeNode(4));
-    final TreeNode right = new TreeNode(6, null, new TreeNode(7));
+    final TreeNode left1 = TreeNode.of(3, TreeNode.of(2), TreeNode.of(4));
+    final TreeNode right = TreeNode.of(6, null, TreeNode.of(7));
 
     root.left = left1;
     root.right = right;

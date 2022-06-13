@@ -10,9 +10,9 @@ class L129Test {
 
   @Test
   void case1Test() {
-    TreeNode l1 = new TreeNode(2);
-    TreeNode r1 = new TreeNode(3);
-    TreeNode root = new TreeNode(1, l1, r1);
+    TreeNode l1 = TreeNode.of(2);
+    TreeNode r1 = TreeNode.of(3);
+    TreeNode root = TreeNode.of(1, l1, r1);
     assertEquals(l.sumNumbers(root), 25);
   }
 
@@ -27,9 +27,9 @@ Therefore, sum = 495 + 491 + 40 = 1026.
    */
   @Test
   void case2Test() {
-    TreeNode l2 = new TreeNode(9, new TreeNode(5), new TreeNode(1));
-    TreeNode r2 = new TreeNode(0);
-    TreeNode root = new TreeNode(4, l2, r2);
+    TreeNode l2 = TreeNode.of(9, TreeNode.of(5), TreeNode.of(1));
+    TreeNode r2 = TreeNode.of(0);
+    TreeNode root = TreeNode.of(4, l2, r2);
     assertEquals(l.sumNumbers(root), 1026);
   }
 }

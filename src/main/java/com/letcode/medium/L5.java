@@ -2,7 +2,7 @@ package com.letcode.medium;
 
 
 public class L5 {
-  /*
+  /**
   https://leetcode.com/problems/longest-palindromic-substring/
   Given a string s, return the longest palindromic substring in s.
 
@@ -29,7 +29,55 @@ public class L5 {
   1 <= s.length <= 1000
   s consist of only digits and English letters.
    */
+
   public String longestPalindrome(String s) {
+    return longestPalindromeMine(s);
+  }
+
+  public String longestPalindromeMine(String s) {
+    /**
+     * 가장 긴 회문 찾기
+     * 모든 단어를 중심으로 하나씩 회문을 찾음
+     * 찾으면서 해당 회문에 대한 왼쪽과 오른쪽의 index 를 구함.
+     * 길이가 길면 result 의 index 값을 변경함.
+     */
+
+    int left = 0, right = 0;
+
+    for (int i = 0; i < s.length(); i++) {
+      left = i;
+      right = i;
+      while (left >= 0 && right < s.length() && s.charAt(left) == s.charAt(right)) {
+        left--;
+        right++;
+      }
+      System.out.println(String.format("i: %s\tlength: %s", i, right - left -1));
+      if (left != right) {
+        System.out.println(s.substring(left + 1, right));
+      } else {
+        System.out.println("no marching");
+      }
+
+      left = i;
+      right = i + 1;
+      while (left >= 0 && right < s.length() && s.charAt(left) == s.charAt(right)) {
+        left--;
+        right++;
+      }
+      System.out.println(String.format("i: %s\tlength: %s", i, right - left -1));
+      if (left != right) {
+        System.out.println(s.substring(left + 1, right));
+      } else {
+        System.out.println("no marching");
+      }
+
+
+    }
+
+    return s;
+  }
+
+  public String longestPalindromeAnswer(String s) {
     //special cases
     if (s == null || s.length() < 1) {
       return "";

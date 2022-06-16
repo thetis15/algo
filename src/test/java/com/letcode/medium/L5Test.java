@@ -15,7 +15,6 @@ class L5Test {
   Note: "aba" is also a valid answer.
    */
   @Test
-  @Disabled
   void testCase1() {
     String result = l5.longestPalindrome("babad");
     assertTrue(result.equals("bab") || result.equals("aba")

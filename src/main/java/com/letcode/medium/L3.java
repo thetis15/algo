@@ -1,7 +1,9 @@
 package com.letcode.medium;
 
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.Map;
+import java.util.Set;
 
 /*
 https://leetcode.com/problems/longest-substring-without-repeating-characters/
@@ -38,10 +40,33 @@ s consists of English letters, digits, symbols and spaces.
  */
 /*
 시간 복잡도(Time Complexity) TC: O(N)
-공간 복잡도(Space Complexity) TC: O(N)
+공간 복잡도(Space Complexity) SC: O(N)
  */
 public class L3 {
   public int lengthOfLongestSubstring(String s) {
+    return lengthOfLongestSubstringMine(s);
+  }
+
+  public int lengthOfLongestSubstringMine(String s) {
+    if (s.length() <= 1) return s.length();
+    Set<Character> saved = new HashSet<>();
+    int length = 0;
+
+    for (int i = 0; i < s.length(); i++) {
+      char c = s.charAt(i);
+      if (saved.contains(c)) {
+        length = Math.max(length, saved.size());
+        i = i - (saved.size());
+        saved.clear();
+      } else {
+        saved.add(c);
+      }
+    }
+
+    return Math.max(length, saved.size());
+  }
+
+  public int lengthOfLongestSubstringAns(String s) {
     if (s.length() <= 1) {
       return s.length();
     }

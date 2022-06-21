@@ -10,6 +10,11 @@ class L6Test {
   Example 1:
 Input: s = "PAYPALISHIRING", numRows = 3
 Output: "PAHNAPLSIIGYIR"
+
+P   A   H   N
+A P L S I I G
+Y   I   R
+
    */
   @Test
   void testCase1() {
@@ -46,6 +51,6 @@ Output: "ABC"
    */
   @Test
   void testCase4() {
-    assertEquals("A", l6.convert("A", 1));
+    assertEquals("ABC", l6.convert("ABC", 1));
   }
 }

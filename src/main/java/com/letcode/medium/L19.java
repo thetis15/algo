@@ -37,9 +37,50 @@ public class L19 {
 	 */
 	public ListNode removeNthFromEnd(ListNode head, int n) {
 
+		return removeNthFromEndMine(head, n);
+//		return removeNthFromEndAns(head, n);
+	}
+
+	private ListNode removeNthFromEndMine(ListNode head, int n) {
+		ListNode temp = head;
+		System.out.printf("h:[%s], t:[%s]\n", head, temp);
+
+		head.next = head.next.next;
+		System.out.printf("h:[%s], t:[%s]\n", head, temp);
+
+		head = head.next.next;
+		System.out.printf("h:[%s], t:[%s]\n", head, temp);
+
+
+		return head;
+	}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	private ListNode removeNthFromEndAns(ListNode head, int n) {
 		ListNode fast = head, slow = head;
 
-		for (int i = 0; i < n; i++)fast = fast.next;
+		for (int i = 0; i < n; i++) {
+			fast = fast.next;
+		}
 
 		if (fast == null) return head.next;
 

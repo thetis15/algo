@@ -126,4 +126,15 @@ Since -91283472332 is less than the lower bound of the range [-2^31, 2^31 - 1], 
   void testCase11() {
     assertEquals(0, r.myAtoi("00000-42a1234"));
   }
+
+  /*
+  Input
+"9223372036854775808"
+Expected
+2147483647
+   */
+  @Test
+  void testCase12() {
+    assertEquals(2147483647, r.myAtoi("9223372036854775808"));
+  }
 }

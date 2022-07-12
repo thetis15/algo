@@ -32,6 +32,33 @@ intervals[i].length == 2
  */
 public class L56 {
   public int[][] merge(int[][] intervals) {
+    return mergeMine(intervals);
+  }
+
+  private int[][] mergeMine(int[][] intervals) {
+    if (intervals.length == 0) return intervals;
+    List<int[]> res = new ArrayList<>();
+
+
+    while (true)
+
+
+    return mergeAns(intervals);
+  }
+
+
+
+
+
+
+
+
+
+
+
+
+
+  private int[][] mergeAns(int[][] intervals) {
     List<int[]> result = new ArrayList<>();
     Arrays.sort(intervals, Comparator.comparingInt(a -> a[0]));
 

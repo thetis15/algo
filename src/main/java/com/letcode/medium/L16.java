@@ -35,6 +35,22 @@ SC 1
  */
 public class L16 {
   public int threeSumClosest(int[] nums, int target) {
+    return threeSumClosestMine(nums, target);
+  }
+
+  private int threeSumClosestMine(int[] nums, int target) {
+    return threeSumClosestAns(nums, target);
+  }
+
+
+
+
+
+
+
+
+
+  private int threeSumClosestAns(int[] nums, int target) {
     if (nums.length <= 3) {
       return Arrays.stream(nums).sum();
     }

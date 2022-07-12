@@ -23,11 +23,36 @@ public class L22 {
    */
   public List<String> generateParenthesis(int n) {
 
+    return generateParenthesisMine(n);
+
+  }
+
+  // todo 나중에 다시 하기
+  private List<String> generateParenthesisMine(int n) {
+
+    return Collections.emptyList();
+  }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  private List<String> generateParenthesisAns(int n) {
     List<String> res = new ArrayList<>();
     backtrack(res, "", 0, 0, n);
     System.out.println(res);
     return res;
-
   }
 
   private void backtrack(List<String> res, String s, int open, int close, int max) {

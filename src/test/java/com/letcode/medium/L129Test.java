@@ -8,6 +8,15 @@ import org.junit.jupiter.api.Test;
 class L129Test {
   private L129 l = new L129();
 
+  /*
+  Input: root = [1,2,3]
+Output: 25
+Explanation:
+The root-to-leaf path 1->2 represents the number 12.
+The root-to-leaf path 1->3 represents the number 13.
+Therefore, sum = 12 + 13 = 25.
+
+   */
   @Test
   void case1Test() {
     TreeNode l1 = TreeNode.of(2);

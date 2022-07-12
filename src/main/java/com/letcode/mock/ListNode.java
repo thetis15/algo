@@ -28,6 +28,7 @@ public class ListNode {
   }
 
   public static ListNode of(int... args) {
+    if (args.length == 0) return new ListNode();
     ListNode head = new ListNode();
     ListNode temp;
     temp = head;

@@ -30,7 +30,48 @@ public class L24 {
    * The number of nodes in the list is in the range [0, 100].
    * 0 <= Node.val <= 100
    */
-  public ListNode swapPairsMine(ListNode head) {
+
+  public ListNode swapPairs(ListNode head) {
+    return swapPairsAnsMine(head);
+  }
+
+  private ListNode swapPairsAnsMine(ListNode head) {
+    int tempVal = 0;
+    ListNode root = head;
+
+    while (head != null && head.next != null) {
+      tempVal = head.val;
+      head.val = head.next.val;
+      head.next.val = tempVal;
+      head = head.next.next;
+    }
+/*
+Input: head = [7,9,6,6,7,8,3,0,9,5], k = 5
+Output:       [7,9,6,6,8,7,3,0,9,5]
+ */
+    return root;
+  }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  public ListNode swapPairsAns(ListNode head) {
     ListNode res = head;
     int tempValue;
     while (head != null && head.next != null) {
@@ -41,21 +82,6 @@ public class L24 {
     }
 
     return res;
-  }
-
-  public ListNode swapPairs(ListNode head) {
-    if ((head == null) || (head.next == null)) {
-      System.out.println(">>>> return head:[" + head + "]");
-      return head;
-    }
-
-    ListNode n = head.next;
-    System.out.println("> n:" + n);
-    head.next = swapPairs(head.next.next);
-    System.out.println(">> head.next. " + head.next);
-    System.out.println(">> head" + head);
-    n.next = head;
-    return n;
   }
 
 

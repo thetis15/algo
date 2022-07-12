@@ -36,6 +36,11 @@ Total amount you can rob = 2 + 9 + 1 = 12.
 
   @Test
   void testCase3() {
-    assertThat(r.rob(new int[] {1, 1, 0, 0, 100, 100, 100, 0, 0, 100, 100}), is(12));
+    assertThat(r.rob(new int[] {1, 1, 0, 0, 100, 100, 100, 0, 0, 100, 100}), is(301));
+  }
+
+  @Test
+  void testCase4() {
+    assertThat(r.rob(new int[] {2, 1, 1, 2, 100, 100, 1, 1, 5}), is(4));
   }
 }

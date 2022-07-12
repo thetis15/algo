@@ -1,3 +1,5 @@
+import java.math.BigDecimal;
+import java.math.MathContext;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
@@ -18,10 +20,87 @@ import java.util.concurrent.TimeUnit;
 
 public class JustTest {
   public static void main(String[] args) {
-    String a = "my text\u205F";
 
-    System.out.println("[" + a.strip() + "]");
-    System.out.println("[" + a.stripLeading() + "]");
+    int n = 10;
+    int count = 0;
+    int idx = 0;
+    boolean goingUp = true;
+    int start = 0;
+    int end = n;
+
+
+    /*
+    - 문제 : 첫째 줄에 수의 개수 N (1 ≤ N ≤ 100,000), 합을 구해야 하는 횟수 M (1 ≤ M ≤ 100,000)이 주어진다.
+    둘째 줄에는 N개의 수가 주어진다. 수는 1,000보다 작거나 같은 자연수이다.
+    셋째 줄부터 M개의 줄에는 합을 구해야 하는 구간 i와 j가 주어진다.
+
+- 총 M개의 줄에 입력으로 주어진 i번째 수부터 j번째 수까지 합을 출력한다.
+
+* 풀이
+다음과 같은 문제에서 처음 입력받은 N개의 숫자에 대하여 미리 구간합 (sum[i+1] = sum[i] + num)을 구함으로 인해
+M번의 연산에서 이전에 sum[i] 에 저장되어 있는 0~i번째 수까지의 구간 합을 사용함으로써 문제를 정해진 시간 내에 풀 수 있다.
+
+
+
+다음과 같은 문제를 미리 구간합을 구하지 않고 합을 구할 때 마다 반복문 내에서 index까지의 합을 구하여 중첩 반복문을 사용하여 풀 경우
+M(연산횟수) 에 따라 전체 시간이 증가하게 되어 시간 복잡도가 O(M*N*N)으로 주어진 시간을 초과하게 된다.
+     */
+
+    /*
+    수 N개가 주어졌을 때, i번째 수부터 j번째 수까지 합을 구하는 프로그램을 작성하시오.
+
+입력
+첫째 줄에 수의 개수 N과 합을 구해야 하는 횟수 M이 주어진다. 둘째 줄에는 N개의 수가 주어진다. 수는 1,000보다 작거나 같은 자연수이다. 셋째 줄부터 M개의 줄에는 합을 구해야 하는 구간 i와 j가 주어진다.
+
+출력
+총 M개의 줄에 입력으로 주어진 i번째 수부터 j번째 수까지 합을 출력한다.
+
+제한
+1 ≤ N ≤ 100,000
+1 ≤ M ≤ 100,000
+1 ≤ i ≤ j ≤ N
+
+예제 입력 1
+5 3
+5 4 3 2 1
+1 3
+2 4
+5 5
+
+예제 출력 1
+12
+9
+1
+
+     */
+  }
+
+  private static void bigDecimnalTest() {
+    MathContext mc = new MathContext(10);
+
+    for (int i = 0; i <= 100; i++) {
+      try {
+        double mathSqrt = Math.sqrt(i);
+        BigDecimal bd32 = BigDecimal.valueOf(i).sqrt(MathContext.DECIMAL32);
+        BigDecimal bd64 = BigDecimal.valueOf(i).sqrt(MathContext.DECIMAL64);
+        BigDecimal bd128 = BigDecimal.valueOf(i).sqrt(MathContext.DECIMAL128);
+        BigDecimal bd10 = BigDecimal.valueOf(i).sqrt(mc);
+
+
+//      System.out.println(mathSqrt);
+//      System.out.println(bd32);
+//      System.out.println(bd64);
+//      System.out.println(bd128);
+//      System.out.println(bdUn);
+//      System.out.println(bd10);
+        System.out.printf("""
+            i: %s \tmathSqrt: %s \tbd32: %s \tbd64: %s \tbd128: %s \tbd10: %s
+            """,
+            i, mathSqrt, bd32, bd64, bd128, bd10);
+      } catch (Exception e) {
+        System.out.printf("i: %s, msg: %s%n", i, e.getMessage());
+      }
+    }
   }
 
   private static int fibonacci(int num, int sum, int prev) {

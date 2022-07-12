@@ -47,16 +47,65 @@ The depth of the tree will not exceed 10.
 시간 복잡도 O(n)
 공간 복잡도 O(n)
  */
+// todo 나중에 다시 풀어보긔~
 public class L129 {
-  public int sum(TreeNode n, int nodeSum) {
-    if (n == null) return 0;
-    if (n.right == null && n.left == null) return nodeSum * 10 + n.val;
-    int leftSum = sum(n.left, nodeSum * 10 + n.val);
-    int rightSum = sum(n.right, nodeSum * 10 + n.val);
+  public int sumNumbers(TreeNode root) {
+    System.out.println("sumMine started");
+    return sumMine(root, 0);
+  }
+
+  private int sumMine(TreeNode n, int nodeSum) {
+    if (n == null) {
+      System.out.printf(">>> nodeSum: [%s]%n", nodeSum);
+      return 0;
+    }
+    if (n.right == null && n.left == null) {
+      int i = nodeSum * 10 + n.val;
+      System.out.printf("fin. nodeSum: [%s], n.val: [%s]\n",
+          nodeSum, n.val);
+      return i;
+    }
+    int leftSum = sumMine(n.left, nodeSum * 10 + n.val);
+    int rightSum = sumMine(n.right, nodeSum * 10 + n.val);
+    System.out.printf(
+        "rightSum: [%s]\tleftSum: [%s]\tnodeSum: [%s]\tnode: [%s]\n",
+        rightSum, leftSum, nodeSum, n.val);
     return leftSum + rightSum;
   }
 
-  public int sumNumbers(TreeNode root) {
-    return sum(root, 0);
+  private int sumMineRec(TreeNode left, int result) {
+    return 0;
+  }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  private int sumAns(TreeNode n, int nodeSum) {
+    if (n == null) return 0;
+    if (n.right == null && n.left == null) return nodeSum * 10 + n.val;
+    int leftSum = sumAns(n.left, nodeSum * 10 + n.val);
+    int rightSum = sumAns(n.right, nodeSum * 10 + n.val);
+    return leftSum + rightSum;
   }
 }

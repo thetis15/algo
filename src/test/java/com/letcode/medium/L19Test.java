@@ -33,7 +33,7 @@ class L19Test {
 	 */
 	@Test
 	void test1() {
-		ListNode result = s.removeNthFromEnd(ListNode.of(1, 2, 3, 4, 5), 4);
+		ListNode result = s.removeNthFromEnd(ListNode.of(1, 2, 3, 4, 5), 2);
 
 		assertEquals(Arrays.asList(1,2,3,5), result.toListData());
 	}

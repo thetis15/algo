@@ -28,9 +28,43 @@ Constraints:
 0 <= nums[i] <= 400
 
  */
+
+import java.util.Arrays;
+
+// FIXME: 2022/07/11  못풀었음
 public class L198 {
   public int rob(int[] nums) {
 
+    return robMine(nums);
+  }
+
+  private int robMine(int[] nums) {
+    return 1;
+  }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  private int robAns(int[] nums) {
     int n = nums.length;
     int[] dp = new int[n];
     dp[0] = nums[0];

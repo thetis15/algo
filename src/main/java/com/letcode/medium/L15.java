@@ -33,8 +33,107 @@ Constraints:
 0 <= nums.length <= 3000
 -105 <= nums[i] <= 105
  */
+// todo 추후 다시 풀어보기
 public class L15 {
   public List<List<Integer>> threeSum(int[] nums) {
+    return threeSumMine(nums);
+  }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  // TC N^2
+  // SC 1
+  public List<List<Integer>> threeSumMine(int[] nums) {
+    if (nums.length <= 2) {
+      return Collections.emptyList();
+    }
+
+    List<List<Integer>> result = new ArrayList<>();
+    int first, val, left, right;
+
+    Arrays.sort(nums);
+
+    /*
+    Input: nums = [-1,0,1,2,-1,-4]
+    Input: nums = [-4,-1,-1,0,1,2]
+     */
+    for (int i = 0; i < nums.length - 2; i++) {
+      if (i > 0 && nums[i] == nums[i - 1]) {
+        continue;
+      }
+      first = nums[i];
+      left = i + 1;
+      right = nums.length - 1;
+
+      while (left < right) {
+        val = first + nums[left] + nums[right];
+        if (val == 0) {
+          result.add(Arrays.asList(first, nums[left], nums[right]));
+          // 데이터 저장후에 left 와 left+1 값이 같으면 안됨.
+          while (left < right && nums[left] == nums[left + 1])
+            left++;
+          while (left < right && nums[right] == nums[right - 1])
+            right--;
+        }
+        if (val > 0) {
+          right--;
+        } else {
+          left++;
+        }
+      }
+    }
+
+
+    return result;
+  }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  private List<List<Integer>> threeSumAns(int[] nums) {
     List<List<Integer>> result = new ArrayList<>();
     int N = nums.length;
     Arrays.sort(nums);

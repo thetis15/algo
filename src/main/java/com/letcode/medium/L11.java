@@ -39,6 +39,56 @@ SC 1
  */
 public class L11 {
   public int maxArea(int[] height) {
+    return maxAreaMine(height);
+  }
+
+  public int maxAreaMine(int[] height) {
+    int left = 0, right = height.length -1, result = 0;
+    int leftVal, rightVal, areaVal;
+
+    while (left != right) {
+      leftVal = height[left];
+      rightVal = height[right];
+      areaVal = Math.min(leftVal, rightVal) * (right - left);
+      result = Math.max(result, areaVal);
+
+      if (leftVal > rightVal) {
+        right--;
+      } else if (rightVal > leftVal) {
+        left++;
+      } else {
+        if (height[left + 1] > height[right - 1]) {
+          right--;
+        } else {
+          left++;
+        }
+      }
+    }
+
+    return result;
+  }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  private int maxAreaAns(int[] height) {
     int result = 0;
     int width = 1;
     int left = 0;

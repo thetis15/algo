@@ -28,8 +28,44 @@ Constraints:
 0 <= digits.length <= 4
 digits[i] is a digit in the range ['2', '9'].
  */
+// todo 다시 시도 하기. 풀지 못하였음.
 public class L17 {
   public List<String> letterCombinations(String digits) {
+    return letterCombinationsMine(digits);
+  }
+
+  private List<String> letterCombinationsMine(String digits) {
+    if (digits.length() == 0)
+      return Collections.emptyList();
+
+
+    List<String> result = new ArrayList<>();
+    return result;
+  }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  private List<String> letterCombinationsAns(String digits) {
     if (digits.length() == 0) {
       return Collections.emptyList();
     }

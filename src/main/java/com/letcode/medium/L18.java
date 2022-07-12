@@ -32,6 +32,88 @@ Constraints:
  */
 public class L18 {
   public List<List<Integer>> fourSum(int[] nums, int target) {
+    return fourSumMine(nums, target);
+  }
+
+  private List<List<Integer>> fourSumMine(int[] nums, int target) {
+    if (nums.length < 4) {
+      return Collections.emptyList();
+    }
+
+    /*
+    -3,-1,0,2,4,5
+    -3,-1,0,2,4,5
+     */
+    List<List<Integer>> result = new ArrayList<>();
+    Arrays.sort(nums);
+
+    int first, second, left, right, val;
+    for (int i = 0; i < nums.length - 3; i++) {
+      if (i > 0 && nums[i] == nums[i-1])
+        continue;
+
+      first = i;
+      for (int j = first + 1; j < nums.length - 2; j++) {
+        second = j;
+        left = second + 1;
+        right = nums.length - 1;
+
+        while (left < right) {
+          val = nums[first] + nums[second] + nums[left] + nums[right];
+          System.out.printf("first: %s[%s], second: %s[%s], left: %s[%s], right: %s[%s], val: %s\n",
+              first, nums[first], second, nums[second], left, nums[left], right, nums[right], val);
+
+          if (val == target) {
+            result.add(Arrays.asList(nums[first], nums[second], nums[left], nums[right]));
+
+            while (left < right && nums[left] == nums[left + 1])
+              left++;
+
+            while (left < right && nums[right] == nums[right - 1])
+              right++;
+          }
+
+          if (val < 0) {
+            left++;
+          } else {
+            right--;
+          }
+        }
+      }
+    }
+
+
+
+    return result;
+  }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  private List<List<Integer>> fourSumAns(int[] nums, int target) {
     Arrays.sort(nums);
     List<List<Integer>> result = new ArrayList<>();
     int left = 0, right = nums.length - 1;

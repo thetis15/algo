@@ -1,5 +1,6 @@
 package com.letcode.medium;
 
+import com.sun.source.tree.IfTree;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Set;
@@ -104,6 +105,81 @@ s consists of English letters (lower-case and upper-case), digits (0-9), ' ', '+
  */
 public class L8 {
   public int myAtoi(String s) {
+    return myAtoiMine(s);
+  }
+
+  public int myAtoiMine(String s) {
+    long result = 0;
+    boolean isNegative = false;
+    boolean isNumStart = false;
+    List<Character> nums = Arrays.asList('1', '2', '3', '4', '5', '6', '7', '8', '9', '0');
+    for (char c : s.toCharArray()) {
+      if (nums.contains(c)) {
+        isNumStart = true;
+        result = result * 10 + Integer.parseInt(String.valueOf(c));
+
+        if (result >= Integer.MAX_VALUE || result <= Integer.MIN_VALUE) {
+          break;
+        }
+      } else {
+        if (isNumStart) {
+          break;
+        } else {
+          if (c == '-')  {
+            isNumStart = true;
+            isNegative = true;
+          } else if (c == '+') {
+            isNumStart = true;
+            isNegative = false;
+          } else if (c == ' ') {
+            continue;
+          } else {
+            break;
+          }
+        }
+      }
+
+    }
+
+    if (isNegative) {
+      result *= -1;
+    }
+
+    if (result >= Integer.MAX_VALUE) {
+      return Integer.MAX_VALUE;
+    } else if (result <= Integer.MIN_VALUE) {
+      return Integer.MIN_VALUE;
+    } else {
+      return (int) result;
+    }
+  }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  public int myAtoiAns(String s) {
     if (s == null || s.length() == 0 || s.trim().length() == 0) return 0;
 
     List<Character> integers = Arrays.asList('0', '1', '2', '3', '4', '5', '6', '7', '8', '9');
@@ -159,4 +235,5 @@ public class L8 {
       return Integer.MAX_VALUE;
     }
   }
+
 }
